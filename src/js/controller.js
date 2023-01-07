@@ -112,22 +112,23 @@ const controlAddRecipe = async function (newRecipe) {
     addRecipeView.renderMessage();
 
     // 4) Render Bookmark View
-    bookmarksView.render(model.state.bookmarks)
-    
+    bookmarksView.render(model.state.bookmarks);
+
     // 5) Change ID in URL
-window.history.pushState(null,'',`#${model.state.recipe.id}`)
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
 
     // 6) Close from window
     setTimeout(function () {
       addRecipeView.toggolWindow();
     }, MODEL_CLOSE_SEC * 1000);
-
-
-
   } catch (err) {
     console.error('✴', err);
     addRecipeView.renderError(err.message);
   }
+};
+
+const newFeature = function () {
+  console.log('Wrelcome to the Application !');
 };
 
 const init = function () {
@@ -139,6 +140,6 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  console.log('Welcome'); 
+  newFeature();
 };
 init();
